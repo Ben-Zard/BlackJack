@@ -1,6 +1,6 @@
 import random
 
-import deer as deer
+
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
@@ -30,7 +30,7 @@ class Deck():
     def __str__(self):
         deck_display = ''
         for card in self.all_cards:
-            deck_display += '' + Cards.__str__()
+            deck_display += '' + card.__str__()
         return "The deck has " + deck_display
 
     def shuffle(self):
@@ -77,7 +77,7 @@ def take_bet(chips):
     while True:
         try:
             chips.bet = int(input("\nhow much money would you like to bet: "))
-        except:
+        except ValueError:
             print("Sorry i need real money")
         else:
             if chips.bet > chips.total:
@@ -201,7 +201,7 @@ while True:
             elif player.value > dealer.value:
                 player_wins(player, dealer,player_chip)
             else:
-                push(dealer.value,player.value)
+                push()
 
             # Inform Player of their chips total
     print(f"player total is {player_chip.total}")
@@ -210,7 +210,7 @@ while True:
         # Ask to play again
     if replay() == True:
         playing = True
-        continue
+
     else:
         print("Thanks for playing")
         break
